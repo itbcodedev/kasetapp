@@ -1,0 +1,68 @@
+---
+title: "Kaset Data Science Project"
+author: "Sawangpong Muadphet"
+date: "7/30/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Kaset Project 
+
+install package
+
+```{r}
+
+install.packages("ggplot2")
+install.packages('scales')
+```
+
+library(ggplot2)
+library(scales)
+
+setwd("~/KasetApp/R")
+```
+
+## ReadData 
+
+```{r}
+do2 <- read.csv(file='../exports/do2.csv')
+do5 <- read.csv(file='../exports/do2.csv')
+ec1 <- read.csv(file='../exports/ec1.csv')
+ec2 <- read.csv(file='../exports/ec2.csv')
+ec3 <- read.csv(file='../exports/ec3.csv')
+ec4 <- read.csv(file='../exports/ec4.csv')
+ec5 <- read.csv(file='../exports/ec5.csv')
+ec6 <- read.csv(file='../exports/ec6.csv')
+```
+
+## Summary
+```{r}
+summary(do2)
+summary(do5)
+summary(ec1)
+summary(ec2)
+summary(ec3)
+summary(ec4)
+summary(ec5)
+summary(ec6)
+```
+
+## Plot
+
+```{r}
+do2_plot <- ggplot(do2,aes(y = value, x = ts)) + geom_point() 
+do2_plot
+```
+
+```{r}
+do5_plot <- ggplot() + geom_point(aes(y = value, x = ts),data = do5)
+do5_plot
+```
+
+```{r}
+ec1_plot <- ggplot() + geom_point(aes(y = value, x = ts),data = ec1)+ scale_x_datetime(breaks = date_breaks("4 sec"), labels = date_format("%M:%S"))
+ec1_plot
+```
